@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Enpecie;
+use App\Entity\Especie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -12,15 +12,15 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * @method Enpecie[]    findAll()
  * @method Enpecie[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EnpecieRepository extends ServiceEntityRepository
+class EspecieRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Enpecie::class);
+        parent::__construct($registry, Especie::class);
     }
 
     // /**
-    //  * @return Enpecie[] Returns an array of Enpecie objects
+    //  * @return Especie[] Returns an array of Especie objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class EnpecieRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Enpecie
+    public function findOneBySomeField($value): ?Especie
     {
         return $this->createQueryBuilder('e')
             ->andWhere('e.exampleField = :val')

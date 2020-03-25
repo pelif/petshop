@@ -38,9 +38,17 @@ class Cliente
     /**     
      * @var object
      * 
-     * @ORM\ManyToOne(targetEntity="App\Entity\Endereco", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Endereco", inversedBy="id", cascade={"persist"})
      */
     private $endereco; 
+
+    /**
+     * $var object 
+     * 
+     * @ORM\ManyToMany(targetEntity="App\Entity\Animal", inversedBy="cliente", cascade={"persist"})
+     * @ORM\JoinTable(name="animal_cliente")
+     */
+    private $animal; 
 
 
     public function getId(): ?int
@@ -137,9 +145,29 @@ class Cliente
      *
      * @return  self
      */ 
-    public function setEndereco(object $endereco)
+    public function setEndereco(Endereco $endereco)
     {
         $this->endereco = $endereco;
+
+        return $this;
+    }
+
+    /**
+     * Get $var object
+     */ 
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
+
+    /**
+     * Set $var object
+     *
+     * @return  self
+     */ 
+    public function setAnimal(\App\Entity\Animal $animal)
+    {
+        $this->animal = $animal;
 
         return $this;
     }

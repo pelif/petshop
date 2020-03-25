@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ cliente.nome }} - Visualização de Cliente {% endblock %}
+
+{% block body %}   
+
+<h1>Visualizando cliente - {{ cliente.nome }}</h1>
+<table class="table table-striped">
+    <tr><th colspan="2">Dados do Cliente</th></tr>
+    <tr>
+        <th>Cod</th>
+        <th>{{ cliente.id }}</th>
+    </tr>
+    <tr>
+        <th>Nome</th>
+        <th>{{ cliente.nome }}</th>
+    </tr>
+    <tr>
+        <th>Telefone</th>
+        <th>{{ cliente.telefone }}</th>
+    </tr>
+    <tr>
+        <th>E-mail</th>
+        <th>{{ cliente.email }}</th>
+    </tr>
+
+    <tr colspan="2"><th colspan="2">Endereço do cliente</th></tr>
+    <tr>
+        <th>Rua</th>
+        <th>{{ cliente.endereco.rua }}</th>
+    </tr>
+    <tr>
+        <th>Bairro</th>
+        <th>{{ cliente.endereco.bairro }}</th>
+    </tr>
+    <tr colspan="2"><th colspan="2">Animais</th></tr>
+    <tr>
+        <th></th>
+        <td>
+        <ul>
+        
+        {% for animal in cliente.animal %}
+            <li><a href="{{ path('visualizar_animal', {'id': animal.id}) }}">{{ animal.nome }}</a></li>
+        {% else %}
+            <li>Nenhum animal para este cliente!</li>
+        {% endfor %}
+
+        </ul>
+        </td>
+    </tr>
+
+</table>
+
+{% endblock %}
+
+
+
+
+

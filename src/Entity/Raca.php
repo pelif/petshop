@@ -10,44 +10,73 @@ use Doctrine\ORM\Mapping as ORM;
 class Raca
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @ORM\Id
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
 
-    /**     
+    /**
      * @var string
-     * @ORM\Column(type="string", length=80)
+     *
+     * @ORM\Column(type="string", length=50)
      */
-    private $nome; 
+    private $nome;
 
-    public function getId(): ?int
+    /**
+     * @var object
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Especie", inversedBy="id")
+     */
+    private $especie;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * Get the value of nome
-     *
-     * @return  string
-     */ 
+     * @return string
+     */
     public function getNome()
     {
         return $this->nome;
     }
 
     /**
-     * Set the value of nome
-     *
-     * @param  string  $nome
-     *
-     * @return  self
-     */ 
-    public function setNome(string $nome)
+     * @param string $nome
+     * @return Raca
+     */
+    public function setNome($nome)
     {
         $this->nome = $nome;
-
         return $this;
     }
-}
+
+    /**
+     * @return object
+     */
+    public function getEspecie()
+    {
+        return $this->especie;
+    }
+
+    /**
+     * @param object $especie
+     * @return Raca
+     */
+    public function setEspecie($especie)
+    {
+        $this->especie = $especie;
+        return $this;
+    }
+   
+    public function getNomeEspecie()
+    {
+        return $this->getEspecie() ? $this->getEspecie()->getNome() : null; 
+    }
+
+}    

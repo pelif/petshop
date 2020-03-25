@@ -6,4 +6,27 @@
     <p class="lead">Petshop - avançando com Symfony 4 - avançando com doctrine.</p>
   </div>
 
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-striped">
+      {% for qts in qts_animais %}
+        <tr>
+        <th>{{ qts.nome }}</th>
+        <th>{{ qts.qtde }}</th>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-striped">
+      {% for qts in qtde_por_raca %}
+        <tr>
+        <th>{{ qts.nome }}</th>
+        <th>{{ qts.qtde }}</th>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+  </div>
+
 {% endblock %}  
